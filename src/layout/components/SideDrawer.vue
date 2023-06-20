@@ -6,7 +6,7 @@
 <template>
   <n-drawer v-model:show="drawerVisible" :width="240" :block-scroll="false" placement="right">
     <n-drawer-content style="padding-top: 0.5rem">
-      <author :card="false" />
+      <author class="side-author" :card="false" />
       <ul class="side-menu">
         <template v-for="menu of menuList" :key="menu.name">
           <li class="item" :class="{ active: route.path === menu.path }">
@@ -110,12 +110,16 @@ const logout = () => {
 </script>
 
 <style lang="scss" scoped>
+.side-author {
+  animation: fadeInRight 0.4s;
+}
+
 .side-menu {
   text-align: center;
   line-height: 3;
   padding: 1rem 1rem 1.25rem;
   background-color: transparent;
-  animation: sidebarItem 0.8s;
+  animation: fadeInRight 0.4s;
 
   .item {
     color: var(--grey-5);

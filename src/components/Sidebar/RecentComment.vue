@@ -12,14 +12,14 @@
     <load-viewer :status="status" no-data-msg="暂时还没有评论哦~" failed-msg="评论加载失败">
       <template #data>
         <div class="comment-item" v-for="comment in commentList" :key="comment.id">
-          <n-avatar circle :size="55" :src="comment.avatar" alt="" />
+          <n-avatar class="comment-avatar" circle :size="55" :src="comment.avatar" alt="" />
           <div class="comment-content">
             <div class="info">
               <div class="nickname">{{ comment.nickname }}</div>
               <div>{{ formatDate(comment.createTime) }}</div>
             </div>
             <n-ellipsis class="content" :line-clamp="2">
-              {{ comment.commentContent }}
+              <span v-html="comment.commentContent" />
             </n-ellipsis>
           </div>
         </div>
@@ -65,21 +65,22 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
-@use '@/assets/styles/mixin';
-
 .comment-item {
-  @include mixin.card-shadow;
   display: flex;
   align-items: center;
   padding: 0.375rem 0 0.375rem 0.25rem;
-  transition: all 0.2s ease-in-out;
-  border-radius: 0.5rem;
-  margin-top: 0.25rem;
+
+  .comment-avatar {
+    transition: transform 0.3s ease-in-out;
+  }
 
   &:hover {
     .nickname {
       color: var(--primary-color);
-      transition: color 0.3s ease-in-out;
+    }
+
+    .comment-avatar {
+      transform: scale(1.05) rotate(5deg);
     }
   }
 }
@@ -87,6 +88,13 @@ onMounted(() => {
 .comment-content {
   width: calc(100% - 4.2rem);
   padding-left: 0.625rem;
+  display: flex;
+  flex-direction: column;
+
+  .nickname {
+    font-size: 0.9rem;
+    transition: color 0.3s ease-in-out;
+  }
 
   .info {
     font-size: 0.5rem;

@@ -37,7 +37,7 @@
   padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 0 1rem var(--box-bg-shadow);
-  transition: all 0.2s ease-in-out 0s;
+  transition: scale 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
   &:not(:first-child) {
     margin-top: 1.25rem;
@@ -67,6 +67,7 @@
       width: 0.25rem;
       height: 25px;
       margin-right: 10px;
+      transition: background-color 0.2s ease-in-out;
       background-color: var(--primary-color-darker);
     }
   }
@@ -145,7 +146,7 @@
   padding: 1.75rem 2.25rem;
   border-radius: 0.75rem;
   box-shadow: 0 0 1rem var(--box-bg-shadow);
-  animation: slideUpIn 1s;
+  animation: fadeInUp 1s;
 }
 
 @media (min-width: 1200px) {
@@ -234,8 +235,8 @@
     -webkit-animation: 0.5s ease-in-out 0ms 1 normal forwards running blur;
 
     &:hover {
-      animation: 1s ease 0ms 1 normal none running author-shake;
-      -webkit-animation: 1s ease 0ms 1 normal none running author-shake;
+      animation: 1s ease 0ms 1 normal none running author-avatar-shake;
+      -webkit-animation: 1s ease 0ms 1 normal none running author-avatar-shake;
     }
   }
 
@@ -249,7 +250,6 @@
     &:hover {
       animation: rubberBand 1s ease-in-out;
     }
-
   }
 
   .site-intro {

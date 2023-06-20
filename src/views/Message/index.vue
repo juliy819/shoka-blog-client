@@ -122,7 +122,7 @@ onMounted(async () => {
     border: #fff 0.125rem solid;
     border-radius: 1.25rem;
     outline: none;
-    animation: slideUpIn 0.3s;
+    animation: fadeInUp 0.3s;
   }
 }
 
@@ -132,8 +132,8 @@ onMounted(async () => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--color-blue) url("http://static.juliy.top/site-imgs/message-bg.jpg") center center/cover no-repeat;
-  animation: slideDownIn 1s;
+  background: var(--color-blue) url("https://static.juliy.top/site-imgs/message-bg.jpg") center center/cover no-repeat;
+  animation: slideInDown 1s;
 }
 
 .danmaku {

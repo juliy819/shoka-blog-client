@@ -1,5 +1,5 @@
 <template>
-  <layout />
+  <layout/>
 </template>
 
 <script lang="ts" setup>
@@ -7,7 +7,7 @@ import Layout from '@/layout';
 import useStore from '@/stores';
 import blogApi from '@/api/blog';
 
-const { blogStore, appStore } = useStore();
+const {blogStore} = useStore();
 
 onMounted(() => {
   console.log(
@@ -17,12 +17,15 @@ onMounted(() => {
       'background:transparent'
   );
 
-  blogApi.getBlogInfo().then(({ data }) => {
+  blogApi.getBlogInfo().then(({data}) => {
     blogStore.setBlogInfo(data.data);
     blogStore.setStatus(1);
-  }).catch(() => { blogStore.setStatus(-1); });
+  }).catch(() => {
+    blogStore.setStatus(-1);
+  });
 
-  blogApi.report().catch(() => {});
+  blogApi.report().catch(() => {
+  });
 });
 
 </script>

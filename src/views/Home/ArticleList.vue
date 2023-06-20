@@ -6,7 +6,7 @@
 <template>
   <load-viewer :status="status" no-data-msg="暂时还没有发布过文章哦~" failed-msg="文章加载失败">
     <template #data>
-      <div v-animate="['fadeInUp']" class="article-item" v-for="article in articleList" :key="article.id">
+      <div v-animate="['fadeInUpBig']" class="article-item" v-for="article in articleList" :key="article.id">
         <router-link :to="`/article/${article.id}`" class="article-cover">
           <my-image :src="setArticleCover(article.articleCover)" />
         </router-link>
@@ -51,7 +51,7 @@
       <pagination v-model:current="pageQuery.current" :total="Math.ceil(count / 5)" />
     </template>
     <template #loading>
-      <div v-animate="['fadeInUp']" class="article-item" v-for="item in [1, 2, 3, 4, 5]" :key="item">
+      <div v-animate="['fadeInUpBig']" class="article-item" v-for="item in [1, 2, 3, 4, 5]" :key="item">
         <n-skeleton class="article-cover" />
         <div class="article-info">
           <n-skeleton class="article-title" width="12rem" height="2rem" round />
@@ -83,15 +83,15 @@ const setArticleCover = (coverSrc: string): string => {
 };
 
 watch(
-    () => pageQuery.value.current,
-    () => {
-      articleApi.getArticleList(pageQuery.value).then(({ data }) => {
-        articleList.value = data.data.recordList;
-        count.value = data.data.count;
-      }).catch(() => {
-        articleList.value = [];
-      });
-    }
+  () => pageQuery.value.current,
+  () => {
+    articleApi.getArticleList(pageQuery.value).then(({ data }) => {
+      articleList.value = data.data.recordList;
+      count.value = data.data.count;
+    }).catch(() => {
+      articleList.value = [];
+    });
+  }
 );
 
 onMounted(async () => {

@@ -1,16 +1,5 @@
-@keyframes slideUpBigIn {
-  0% {
-    opacity: 0;
-    transform: translateY(80px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideDownIn {
+// 向下滑入
+@keyframes slideInDown {
   0% {
     opacity: 0;
     transform: translateY(-50px);
@@ -22,7 +11,8 @@
   }
 }
 
-@keyframes slideUpIn {
+// 淡入、向上滑入
+@keyframes fadeInUp {
   0% {
     opacity: 0;
     transform: translateY(40px);
@@ -34,6 +24,20 @@
   }
 }
 
+// 淡入、向上滑入，幅度更大
+@keyframes fadeInUpBig {
+  0% {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 标题放大效果
 @keyframes titleScale {
   0% {
     opacity: 0;
@@ -46,7 +50,8 @@
   }
 }
 
-@keyframes author-shake {
+// 头像晃动效果
+@keyframes author-avatar-shake {
   0% {
     transform: scale(1);
   }
@@ -74,6 +79,7 @@
   }
 }
 
+// 模糊效果
 @keyframes blur {
   0% {
     filter: blur(10px);
@@ -81,26 +87,5 @@
 
   100% {
     filter: blur(0);
-  }
-}
-
-@keyframes sidebarItem {
-  0% {
-    transform: translateX(200px);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes zoomIn {
-  0% {
-    opacity: 0;
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-
-  50% {
-    opacity: 1;
   }
 }

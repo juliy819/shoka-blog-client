@@ -18,7 +18,7 @@
 // 首页左侧容器
 .left-container {
   width: calc(100% - 18.75rem);
-  box-shadow: 0 0 1rem var(--box-bg-shadow);
+  box-shadow: var(--shadow-base);
   border-radius: 0.5rem;
   transition: all 0.3s;
   padding: 0.5rem 0;
@@ -36,7 +36,7 @@
 .side-card {
   padding: 1rem;
   border-radius: 0.5rem;
-  box-shadow: 0 0 1rem var(--box-bg-shadow);
+  box-shadow: var(--shadow-base);
   transition: scale 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
   &:not(:first-child) {
@@ -44,7 +44,7 @@
   }
 
   &:hover {
-    box-shadow: 0 2rem 5rem var(--box-bg-shadow);
+    box-shadow: 0 1rem 3rem var(--shadow-color);
     scale: 1.02 1.02;
 
     .card-title::before {
@@ -145,7 +145,7 @@
   margin: 1.5rem auto;
   padding: 1.75rem 2.25rem;
   border-radius: 0.75rem;
-  box-shadow: 0 0 1rem var(--box-bg-shadow);
+  box-shadow: var(--shadow-base);
   animation: fadeInUp 1s;
 }
 
@@ -155,7 +155,7 @@
   }
 
   .page-container {
-    width: 60.5rem;
+    //width: 80rem;
   }
 }
 
@@ -199,19 +199,11 @@
   }
 }
 
-.card-shadow {
-  box-shadow: 0 0.625rem 1.875rem -0.9375rem var(--box-bg-shadow);
-
-  &:hover {
-    box-shadow: 0 0 2rem var(--box-bg-shadow);
-  }
-}
-
 .n-pagination-item:hover,
 .n-pagination-item--active {
   color: var(--grey-0) !important;
   background-image: linear-gradient(to right, var(--color-pink) 0, var(--color-orange) 100%) !important;
-  box-shadow: 0 0 .75rem var(--color-pink-a3) !important;
+  box-shadow: 0 0 1rem var(--color-pink-a3) !important;
   border: none !important;
 }
 
@@ -229,7 +221,7 @@
   flex-direction: column;
 
   .author-avatar {
-    box-shadow: 0 0 2rem 0.2rem var(--body-bg-shadow);
+    box-shadow: var(--shadow-base);
     border: 0.1rem solid var(--grey-0);
     animation: 0.5s ease-in-out 0ms 1 normal forwards running blur;
     -webkit-animation: 0.5s ease-in-out 0ms 1 normal forwards running blur;

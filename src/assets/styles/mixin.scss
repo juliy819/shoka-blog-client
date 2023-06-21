@@ -10,11 +10,11 @@
   left: 0;
 }
 
-@mixin card-shadow {
-  box-shadow: 0 0.625rem 1.875rem -0.9375rem var(--box-bg-shadow);
+@mixin hover-card {
+  box-shadow: var(--shadow-3);
 
   &:hover {
-    box-shadow: 0 0 2rem var(--box-bg-shadow);
+    box-shadow: 0 0 2rem var(--shadow-color);
     scale: 1.005 1.005;
   }
 }

@@ -46,7 +46,7 @@
           </n-grid>
         </template>
         <template #loading>
-          <n-grid x-gap="20" y-gap="20" cols="1 s:2 m:3" responsive="screen">
+          <n-grid x-gap="20" y-gap="20" cols="1 s:2 m:3 l:4" responsive="screen">
             <n-grid-item class="article-item" v-for="index of [1,2,3,4,5,6]" :key="index">
               <n-skeleton class="article-cover" />
               <div class="article-info">
@@ -103,15 +103,11 @@ onMounted(() => {
 @use '@/assets/styles/mixin';
 
 .article-item {
+  @include mixin.hover-card;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0.625rem 1.875rem -0.9375rem var(--box-bg-shadow);
   transition: all 0.2s ease-in-out 0s;
   animation: zoomIn 1s both;
-
-  &:hover {
-    box-shadow: 0 0 2rem var(--box-bg-shadow);
-  }
 }
 
 .article-cover {

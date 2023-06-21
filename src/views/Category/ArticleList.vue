@@ -13,7 +13,7 @@
     <div class="page-container">
       <load-viewer :status="status" no-data-msg="该分类下暂时还没有文章哦~" failed-msg="文章列表加载失败">
         <template #data>
-          <n-grid x-gap="20" y-gap="20" cols="1 s:2 m:3" responsive="screen">
+          <n-grid x-gap="20" y-gap="20" cols="1 s:2 m:3 l:4" responsive="screen">
             <n-grid-item class="article-item" v-for="article of articleList" :key="article.id">
               <div class="article-cover">
                 <router-link :to="`/article/${article.id}`">
@@ -77,7 +77,7 @@ const name = ref('');
 const articleList = ref<ArticleCondition[]>([]);
 const articleQuery = ref<ArticleQuery>({
   current: 1,
-  size: 5,
+  size: 8,
   categoryId: Number(route.params.id),
   tagId: 0
 });
@@ -99,15 +99,11 @@ onMounted(() => {
 @use '@/assets/styles/mixin';
 
 .article-item {
+  @include mixin.hover-card;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0.625rem 1.875rem -0.9375rem var(--box-bg-shadow);
   transition: all 0.2s ease-in-out 0s;
   animation: zoomIn 1s both;
-
-  &:hover {
-    box-shadow: 0 0 2rem var(--box-bg-shadow);
-  }
 }
 
 .article-cover {

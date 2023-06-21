@@ -43,7 +43,7 @@ const isMessage = computed(() => useRoute().name === 'message');
   padding: 2.5rem 0;
   font-size: 0.875rem;
   text-align: center;
-  box-shadow: 0 0 10px var(--box-bg-shadow), 0 0 10px var(--box-bg-shadow);
+  box-shadow: 0 0 10px var(--shadow-color), 0 0 10px var(--shadow-color);
   border-radius: 10px 10px 0 0;
   color: var(--grey-0);
   background: var(--footer-bg);

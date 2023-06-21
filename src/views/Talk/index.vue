@@ -111,13 +111,13 @@ onMounted(() => {
   flex-direction: column;
   padding: 1rem 1.25rem;
   border-radius: 0.5rem;
-  box-shadow: 0 0.625rem 1.875rem -0.9375rem var(--box-bg-shadow);
+  box-shadow: 0 0.625rem 1.875rem -0.9375rem var(--shadow-color);
   animation-duration: 0.5s;
   transition: all 0.2s ease-in-out 0s;
   visibility: hidden;
 
   &:hover {
-    box-shadow: 0 0 2rem var(--box-bg-shadow);
+    box-shadow: 0 0 2rem var(--shadow-color);
   }
 
   &:not(:first-child) {

@@ -112,7 +112,7 @@ onMounted(async () => {
 @use '@/assets/styles/mixin';
 
 .article-item {
-  @include mixin.card-shadow;
+  @include mixin.hover-card;
   display: flex;
   height: 14rem;
   margin: 1.25rem 0.5rem 0;

@@ -51,7 +51,7 @@ const talkList = ref<TalkHome[]>([]);
 const toTalk = (id?: number): void => {
   let path = '/talk';
   if (typeof id === 'number') {
-    path += `/${id}`;
+    path += `/${ id }`;
   }
   router.push({ path: path });
 };
@@ -73,7 +73,7 @@ onMounted(() => {
 @use "@/assets/styles/mixin";
 
 .talk-swiper {
-  @include mixin.card-shadow;
+  @include mixin.hover-card;
 
   margin: 0 0.5rem;
   padding: 0.6rem 1rem;

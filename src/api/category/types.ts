@@ -5,16 +5,24 @@ import type { ArticleConditionList, ArticleQuery } from '@/api/article/types';
 export interface CategoryApi {
 
   /**
-   * 查看文章分类
+   * 获取文章分类
    * @returns 文章分类
    */
   getCategoryList(): AxiosPromise<Result<Category[]>>;
 
   /**
-   * 查看分类文章
+   * 获取分类文章
+   * @param articleQuery 查询条件
    * @returns 文章分类
    */
   getCategoryArticleList(articleQuery: ArticleQuery): AxiosPromise<Result<ArticleConditionList>>;
+
+  /**
+   * 获取分类文章数量
+   * @param articleQuery 查询条件
+   * @return 文章数量
+   */
+  countCategoryArticles(articleQuery: ArticleQuery): AxiosPromise<Result<number>>;
 }
 
 /**

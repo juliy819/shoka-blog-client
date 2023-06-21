@@ -13,7 +13,7 @@
     <div class="page-container">
       <load-viewer :status="status" no-data-msg="该标签下暂时还没有文章哦~" failed-msg="文章列表加载失败">
         <template #data>
-          <n-grid x-gap="20" y-gap="20" cols="1 s:2 m:3" responsive="screen">
+          <n-grid x-gap="20" y-gap="20" cols="1 s:2 m:3 l:4" responsive="screen">
             <n-grid-item class="article-item" v-for="article of articleList" :key="article.id">
               <div class="article-cover">
                 <router-link :to="`/article/${article.id}`">
@@ -44,6 +44,7 @@
               </div>
             </n-grid-item>
           </n-grid>
+          <pagination v-if="count > 8" v-model:current="articleQuery.current" :total="Math.ceil(count / 8)" />
         </template>
         <template #loading>
           <n-grid x-gap="20" y-gap="20" cols="1 s:2 m:3 l:4" responsive="screen">
@@ -73,20 +74,26 @@ import tagApi from '@/api/tag';
 import { formatDate } from '@/utils/date';
 import MyImage from '@/components/MyImage.vue';
 import { getRandomBgImage } from '@/utils/common';
+import Pagination from '@/components/Pagination.vue';
 
 const bgImage = getRandomBgImage();
 const route = useRoute();
 const status = ref<number>(0);
+const count = ref<number>(0);
 const name = ref('标签');
 const articleList = ref<ArticleCondition[]>([]);
 const articleQuery = ref<ArticleQuery>({
   current: 1,
-  size: 5,
+  size: 8,
   categoryId: 0,
   tagId: Number(route.params.id)
 });
 
 onMounted(() => {
+  tagApi.countTagArticles(articleQuery.value).then(({ data }) => {
+    count.value = data.data;
+  }).catch(() => {count.value = 0;});
+
   tagApi.getTagArticleList(articleQuery.value).then(({ data }) => {
     articleList.value = data.data.articleConditionList;
     name.value = data.data.name;

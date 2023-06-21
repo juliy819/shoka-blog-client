@@ -40,9 +40,10 @@
               </div>
             </n-grid-item>
           </n-grid>
+          <pagination v-if="count > 8" v-model:current="articleQuery.current" :total="Math.ceil(count / 8)" />
         </template>
         <template #loading>
-          <n-grid x-gap="20" y-gap="20" cols="1 s:2 m:3" responsive="screen">
+          <n-grid x-gap="20" y-gap="20" cols="1 s:2 m:3 l:4" responsive="screen">
             <n-grid-item class="article-item" v-for="index of [1,2,3,4,5,6]" :key="index">
               <n-skeleton class="article-cover" />
               <div class="article-info">
@@ -69,10 +70,12 @@ import categoryApi from '@/api/category';
 import { formatDate } from '@/utils/date';
 import MyImage from '@/components/MyImage.vue';
 import { getRandomBgImage } from '@/utils/common';
+import Pagination from '@/components/Pagination.vue';
 
 const bgImage = getRandomBgImage();
 const route = useRoute();
 const status = ref<number>(0);
+const count = ref<number>(0);
 const name = ref('');
 const articleList = ref<ArticleCondition[]>([]);
 const articleQuery = ref<ArticleQuery>({
@@ -82,7 +85,26 @@ const articleQuery = ref<ArticleQuery>({
   tagId: 0
 });
 
+watch(
+  () => articleQuery.value.current,
+  () => {
+    categoryApi.getCategoryArticleList(articleQuery.value).then(({ data }) => {
+      articleList.value = data.data.articleConditionList;
+      name.value = data.data.name;
+      if (articleList.value.length > 0) {
+        status.value = 1;
+      } else {
+        status.value = 2;
+      }
+    }).catch(() => {status.value = -1;});
+  }
+);
+
 onMounted(() => {
+  categoryApi.countCategoryArticles(articleQuery.value).then(({ data }) => {
+    count.value = data.data;
+  }).catch(() => {count.value = 0;});
+
   categoryApi.getCategoryArticleList(articleQuery.value).then(({ data }) => {
     articleList.value = data.data.articleConditionList;
     name.value = data.data.name;

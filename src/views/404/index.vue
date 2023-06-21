@@ -6,7 +6,7 @@
 <template>
   <div class="page-header">
     <h1 class="page-title">Σ( ° △ °|||)︴404！何も見えない</h1>
-    <img class="page-cover" src="http://static.juliy.top/site-imgs/def-bg.png" alt="">
+    <img class="page-cover" :src="bgImage" alt="">
     <waves />
   </div>
   <div class="bg">
@@ -22,7 +22,11 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { getRandomBgImage } from '@/utils/common';
+
+const bgImage = getRandomBgImage();
+</script>
 
 <style scoped>
 .notfound {

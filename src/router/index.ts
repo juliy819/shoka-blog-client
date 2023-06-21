@@ -58,6 +58,11 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/Talk/Talk.vue')
   },
   {
+    path: '/collect',
+    name: 'collect',
+    component: () => import('@/views/Collect/index.vue')
+  },
+  {
     path: '/user',
     name: 'user',
     component: () => import('@/views/User/index.vue')

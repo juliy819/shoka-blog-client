@@ -6,7 +6,7 @@
 <template>
   <div class="page-header">
     <h1 class="page-title">标签</h1>
-    <img class="page-cover" src="http://static.juliy.top/site-imgs/def-bg.png" alt="">
+    <img class="page-cover" :src="bgImage" alt="">
     <waves />
   </div>
   <div class="bg">
@@ -33,7 +33,9 @@
 import tagApi from '@/api/tag';
 import type { Tag } from '@/api/tag/types';
 import { ref } from 'vue';
+import { getRandomBgImage } from '@/utils/common';
 
+const bgImage = getRandomBgImage();
 const status = ref<number>(0);
 const tagList = ref<Tag[]>([]);
 

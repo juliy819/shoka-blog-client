@@ -6,7 +6,7 @@
 <template>
   <div class="page-header">
     <h1 class="page-title">关于</h1>
-    <img class="page-cover" src="http://static.juliy.top/site-imgs/def-bg.png" alt="" />
+    <img class="page-cover" :src="bgImage" alt="" />
     <waves />
   </div>
   <div class="bg">
@@ -22,6 +22,9 @@
 
 <script setup lang="ts">
 import useStore from '@/stores';
+import { getRandomBgImage } from '@/utils/common';
+
+const bgImage = getRandomBgImage();
 
 const { blogStore } = useStore();
 </script>

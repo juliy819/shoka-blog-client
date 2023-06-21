@@ -6,7 +6,7 @@
 <template>
   <div class="page-header">
     <h1 class="page-title">{{ name }}</h1>
-    <img class="page-cover" src="http://static.juliy.top/site-imgs/def-bg.png" alt="">
+    <img class="page-cover" :src="bgImage" alt="">
     <waves />
   </div>
   <div class="bg">
@@ -72,7 +72,9 @@ import type { ArticleCondition, ArticleQuery } from '@/api/article/types';
 import tagApi from '@/api/tag';
 import { formatDate } from '@/utils/date';
 import MyImage from '@/components/MyImage.vue';
+import { getRandomBgImage } from '@/utils/common';
 
+const bgImage = getRandomBgImage();
 const route = useRoute();
 const status = ref<number>(0);
 const name = ref('标签');

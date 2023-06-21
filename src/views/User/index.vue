@@ -6,7 +6,7 @@
 <template>
   <div class="page-header">
     <h1 class="page-title">个人中心</h1>
-    <img class="page-cover" src="http://static.juliy.top/site-imgs/def-bg.png" alt="">
+    <img class="page-cover" :src="bgImage" alt="">
     <waves />
   </div>
   <div class="bg">
@@ -52,7 +52,9 @@ import type { UserInfo } from '@/api/user/types';
 import useStore from '@/stores';
 import { modal } from '@/utils/modal';
 import UserAvatar from '@/views/User/UserAvatar.vue';
+import { getRandomBgImage } from '@/utils/common';
 
+const bgImage = getRandomBgImage();
 const { userStore, appStore } = useStore();
 const router = useRouter();
 const userForm = ref<UserInfo>({

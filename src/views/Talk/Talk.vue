@@ -6,7 +6,7 @@
 <template>
   <div class="page-header">
     <h1 class="page-title">说说</h1>
-    <img class="page-cover" src="http://static.juliy.top/site-imgs/def-bg.png" alt="">
+    <img class="page-cover" :src="bgImage" alt="">
     <waves />
   </div>
   <div class="bg">
@@ -67,7 +67,9 @@ import type { Talk } from '@/api/talk/types';
 import useStore from '@/stores';
 import { formatDateTime } from '@/utils/date';
 import { modal } from '@/utils/modal';
+import { getRandomBgImage } from '@/utils/common';
 
+const bgImage = getRandomBgImage();
 const route = useRoute();
 const { userStore, appStore } = useStore();
 const status = ref<number>(0);

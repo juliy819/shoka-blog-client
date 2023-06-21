@@ -6,7 +6,7 @@
 <template>
   <div class="page-header">
     <h1 class="page-title">归档</h1>
-    <img class="page-cover" src="http://static.juliy.top/site-imgs/def-bg.png" alt="" />
+    <img class="page-cover" :src="bgImage" alt="" />
     <waves />
   </div>
   <div class="bg">
@@ -47,7 +47,9 @@ import type { Archives } from '@/api/archives/types';
 import type { PageQuery } from '@/model';
 import { formatDate } from '@/utils/date';
 import { ref } from 'vue';
+import { getRandomBgImage } from '@/utils/common';
 
+const bgImage = getRandomBgImage();
 const count = ref(0);
 const status = ref<number>(0);
 const queryParams = ref<PageQuery>({
@@ -57,13 +59,13 @@ const queryParams = ref<PageQuery>({
 const archivesList = ref<Archives[]>([]);
 
 watch(
-    () => queryParams.value.current,
-    () => {
-      archivesApi.getArchivesList(queryParams.value).then(({ data }) => {
-        archivesList.value = data.data.recordList;
-        count.value = data.data.count;
-      });
-    }
+  () => queryParams.value.current,
+  () => {
+    archivesApi.getArchivesList(queryParams.value).then(({ data }) => {
+      archivesList.value = data.data.recordList;
+      count.value = data.data.count;
+    });
+  }
 );
 
 onMounted(() => {

@@ -6,7 +6,7 @@
 <template>
   <div class="page-header">
     <h1 class="page-title">分类</h1>
-    <img class="page-cover" src="http://static.juliy.top/site-imgs/def-bg.png" alt="">
+    <img class="page-cover" :src="bgImage" alt="">
     <waves />
   </div>
   <div class="bg">
@@ -33,7 +33,9 @@
 import { ref } from 'vue';
 import categoryApi from '@/api/category';
 import type { Category } from '@/api/category/types';
+import { getRandomBgImage } from '@/utils/common';
 
+const bgImage = getRandomBgImage();
 let categoryOption = reactive({
   textStyle: {
     color: 'var(--grey-0)'

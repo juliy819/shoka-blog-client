@@ -13,15 +13,8 @@
 </template>
 
 <script setup lang="ts">
-const imageList = [
-  'https://img.timelessq.com/images/2022/07/26/1fca97d4bee5434e2dec3c0a4a75bc64.jpg',
-  'https://img.timelessq.com/images/2022/07/26/a11995a8254fd4a4038ba59f6bcf5a89.jpg',
-  'https://img.timelessq.com/images/2022/07/26/626f157a4ff74c7984f4110e38031524.jpg',
-  'https://img.timelessq.com/images/2022/07/26/545e6f6f8db4a66e412bf2c5213d3d10.jpg',
-  'https://img.timelessq.com/images/2022/07/26/a645009f08917c96e3c883e675f5aa58.jpg',
-  'https://img.timelessq.com/images/2022/07/26/f99aff0036302f62ec222c046d3e953b.jpg'
-];
-
+const images = import.meta.glob('../../assets/images/bg/*.{jpg,png,gif}');
+const imageList = Object.keys(images).map((key) => 'src' + key.slice(5));
 </script>
 
 <style scoped lang="scss">

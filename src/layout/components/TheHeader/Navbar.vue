@@ -239,10 +239,12 @@ const logout = () => {
     padding: 0.3rem 0.7rem;
     display: inline-block;
     text-shadow: none;
+    transition: transform 0.2s ease-in-out;
   }
 
   &:hover .sub-menu-link {
-    transform: translateX(0.3rem);
+    transform: translateX(0.2rem);
+    color: var(--grey-0);
   }
 }
 

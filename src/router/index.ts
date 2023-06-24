@@ -5,67 +5,67 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'home',
-    component: () => import('@/views/Home/index.vue')
+    component: () => import('@/views/home/index.vue')
   },
   {
     path: '/about',
     name: 'about',
-    component: () => import('@/views/About/index.vue')
+    component: () => import('@/views/about/index.vue')
   },
   {
     path: '/archive',
     name: 'archive',
-    component: () => import('@/views/Archive/index.vue')
+    component: () => import('@/views/archive/index.vue')
   },
   {
     path: '/article/:id',
     name: 'article',
-    component: () => import('@/views/Article/index.vue')
+    component: () => import('@/views/article/index.vue')
   },
   {
     path: '/category',
     name: 'categoryList',
-    component: () => import('@/views/Category/index.vue')
+    component: () => import('@/views/category/index.vue')
   },
   {
     path: '/category/:id',
     name: 'category',
-    component: () => import('@/views/Category/ArticleList.vue')
+    component: () => import('@/views/category/ArticleList.vue')
   },
   {
     path: '/message',
     name: 'message',
-    component: () => import('@/views/Message/index.vue')
+    component: () => import('@/views/message/index.vue')
   },
   {
     path: '/tag',
     name: 'tagList',
-    component: () => import('@/views/Tag/index.vue')
+    component: () => import('@/views/tag/index.vue')
   },
   {
     path: '/tag/:id',
     name: 'tag',
-    component: () => import('@/views/Tag/ArticleList.vue')
+    component: () => import('@/views/tag/ArticleList.vue')
   },
   {
     path: '/talk',
     name: 'talkList',
-    component: () => import('@/views/Talk/index.vue')
+    component: () => import('@/views/talk/index.vue')
   },
   {
     path: '/talk/:id',
     name: 'talk',
-    component: () => import('@/views/Talk/Talk.vue')
+    component: () => import('@/views/talk/Talk.vue')
   },
   {
     path: '/favourite',
     name: 'favourite',
-    component: () => import('@/views/Favourite/index.vue')
+    component: () => import('@/views/favourite/index.vue')
   },
   {
     path: '/user',
     name: 'user',
-    component: () => import('@/views/User/index.vue')
+    component: () => import('@/views/user/index.vue')
   },
   {
     path: '/:pathMatch(.*)*',

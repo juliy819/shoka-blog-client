@@ -25,11 +25,11 @@
 </template>
 
 <script setup lang="ts">
-import ImageCarousel from '@/views/Home/ImageCarousel.vue';
-import Brand from '@/views/Home/Brand.vue';
-import TalkSwiper from '@/views/Home/TalkSwipper.vue';
-import FeaturedSwiper from '@/views/Home/FeaturedSwiper.vue';
-import ArticleList from '@/views/Home/ArticleList.vue';
+import ImageCarousel from '@/views/home/ImageCarousel.vue';
+import Brand from '@/views/home/Brand.vue';
+import TalkSwiper from '@/views/home/TalkSwipper.vue';
+import FeaturedSwiper from '@/views/home/FeaturedSwiper.vue';
+import ArticleList from '@/views/home/ArticleList.vue';
 
 const scrollDown = () => {
   window.scrollTo({

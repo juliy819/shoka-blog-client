@@ -51,7 +51,7 @@ import userApi from '@/api/user';
 import type { UserInfo } from '@/api/user/types';
 import useStore from '@/stores';
 import { modal } from '@/utils/modal';
-import UserAvatar from '@/views/User/UserAvatar.vue';
+import UserAvatar from '@/views/user/UserAvatar.vue';
 import { getRandomBgImage } from '@/utils/common';
 
 const bgImage = getRandomBgImage();

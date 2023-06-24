@@ -10,3 +10,11 @@ export const getRandomBgImage = (): string => {
   // 处理路径
   return '/src/' + keys[randomInt].slice(5);
 };
+
+/**
+ * 打开链接
+ * @param url 链接
+ */
+export const toUrl = (url: string): void => {
+  window.open(url);
+};

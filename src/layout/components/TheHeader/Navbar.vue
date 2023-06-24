@@ -11,7 +11,7 @@
         {{ blogStore.siteConfig.siteName === undefined ? 'shoka-blog' : blogStore.siteConfig.siteName }}
       </router-link>
     </div>
-    <div v-for="(menuItem, index) in menuItems" :key="index" class="menu-item">
+    <div v-for="(menuItem, index) in menuList" :key="index" class="menu-item">
       <!-- 一级菜单项 -->
       <router-link v-if="menuItem.children === undefined" :to="menuItem.path" class="menu-btn">
         <svg-icon :icon-class="menuItem.icon" />
@@ -66,61 +66,11 @@
 <script lang="ts" setup>
 import useStore from '@/stores';
 import { modal } from '@/utils/modal';
+import type { MenuItem } from '@/config/menu';
+import { menuList } from '@/config/menu';
 
 const route = useRoute();
 const { blogStore, userStore, appStore } = useStore();
-
-interface MenuItem {
-  title: string,
-  path: string | undefined,
-  icon: string,
-  children?: MenuItem[]
-}
-
-const menuItems: MenuItem[] = [
-  {
-    title: '首页',
-    path: '/',
-    icon: 'home'
-  },
-  {
-    title: '文章',
-    path: undefined,
-    icon: 'article',
-    children: [
-      {
-        title: '归档',
-        path: '/archive',
-        icon: 'archive'
-      },
-      {
-        title: '分类',
-        path: '/category',
-        icon: 'category'
-      },
-      {
-        title: '标签',
-        path: '/tag',
-        icon: 'tag'
-      }
-    ]
-  },
-  {
-    title: '说说',
-    path: '/talk',
-    icon: 'talk'
-  },
-  {
-    title: '留言板',
-    path: '/message',
-    icon: 'message'
-  },
-  {
-    title: '关于',
-    path: '/about',
-    icon: 'plane'
-  }
-];
 
 const logout = () => {
   userStore.logout();

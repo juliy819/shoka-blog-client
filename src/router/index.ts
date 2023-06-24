@@ -58,9 +58,9 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/Talk/Talk.vue')
   },
   {
-    path: '/collect',
-    name: 'collect',
-    component: () => import('@/views/Collect/index.vue')
+    path: '/favourite',
+    name: 'favourite',
+    component: () => import('@/views/Favourite/index.vue')
   },
   {
     path: '/user',

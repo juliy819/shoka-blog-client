@@ -13,6 +13,7 @@ declare module '@vue/runtime-core' {
     Author: typeof import('./../components/Sidebar/Author.vue')['default']
     Catalog: typeof import('./../components/Catalog.vue')['default']
     Comment: typeof import('./../components/comment/index.vue')['default']
+    DayNightToggle: typeof import('./../components/DayNightToggle.vue')['default']
     Echarts: typeof import('./../components/Echarts.vue')['default']
     EmailDialog: typeof import('./../components/dialog/EmailDialog.vue')['default']
     Emoji: typeof import('./../components/Emoji.vue')['default']

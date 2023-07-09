@@ -10,33 +10,19 @@
     <div :class="{ sub: y > 0 }">
       <navbar />
     </div>
-    <ul class="right">
-      <li class="right-btn">
-        <svg-icon :icon-class="isDark ? 'moon' : 'sun'" @click="toggle()" />
-      </li>
-      <li class="right-btn">
-        <svg-icon icon-class="search" @click="" />
-      </li>
-    </ul>
+    <day-night-toggle class="day-night-toggle" />
+
   </header>
 </template>
 
 <script lang="ts" setup>
 import Navbar from '@/layout/components/TheHeader/Navbar.vue';
 import Hamburger from '@/layout/components/TheHeader/Hamburger.vue';
-import { useDark, useScroll } from '@vueuse/core';
-import { useToggle } from '@vueuse/shared';
+import { useScroll } from '@vueuse/core';
 import useStore from '@/stores';
 
 const { appStore } = useStore();
 const { y } = useScroll(window);
-const isDark = useDark({
-  selector: 'html',
-  attribute: 'theme',
-  valueDark: 'dark',
-  valueLight: 'light'
-});
-const toggle = useToggle(isDark);
 const show = ref(false);
 const up = ref(true);
 
@@ -93,16 +79,20 @@ watch(y, (newValue, oldValue) => {
   align-items: center;
   justify-content: center;
   height: 100%;
+}
 
-  .right-btn {
-    padding: 0.625rem 0.5rem;
-    cursor: pointer;
-  }
+.day-night-toggle {
+  zoom: 0.5;
 }
 
 @media (max-width: 991px) {
   .header-wrapper {
     padding: 0;
+  }
+
+  .day-night-toggle {
+    zoom: 0.35;
+    margin-right: 2rem;
   }
 }
 

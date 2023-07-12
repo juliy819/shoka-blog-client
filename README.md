@@ -1,56 +1,74 @@
-# juliy_blog
+这里是shoka-blog项目的前台代码仓库
 
-This template should help get you started developing with Vue 3 in Vite.
+后端: [**shoka-blog-client**](https://github.com/juliy819/shoka-blog-springboot)
 
-## Recommended IDE Setup
+后台: [**shoka-blog-admin**](https://github.com/juliy819/shoka-blog-admin)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (
-and disable
-Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+整合(不再更新): [**shoka-blog**](https://github.com/juliy819/shoka-blog)
 
-## Type Support for `.vue` Imports in TS
+## 部分页面截图
 
-TypeScript cannot handle type information for `.vue` imports by default, so we
-replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we
-need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin)
-to make the TypeScript language service aware of `.vue` types.
+![](img/img_1.png)
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has
-also implemented
-a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669)
-that is more performant. You can enable it by the following steps:
+![](img/img_2.png)
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and
-       select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the
-   command palette.
+![](img/img_3.png)
 
-## Customize configuration
+![](img/img_4.png)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+![](img/img_5.png)
 
-## Project Setup
+## 项目地址(服务器过期，已失效)
 
-```sh
-npm install
-```
+项目链接： [**https://www.juliy.top**](https://www.juliy.top)
 
-### Compile and Hot-Reload for Development
+后台链接： [**https://admin.juliy.top**](https://admin.juliy.top)
 
-```sh
-npm run dev
-```
+测试账号： `test@qq.com`，密码：`123456`
 
-### Type-Check, Compile and Minify for Production
+接口文档：[**https://admin.juliy.top/doc.html**](https://admin.juliy.top/doc.html)
 
-```sh
-npm run build
-```
+------------------------------------
 
-### Lint with [ESLint](https://eslint.org/)
+## 项目特点
 
-```sh
-npm run lint
-```
+- 前台界面参考 `Hexo` 的 `Shoka` 和 `Butterfly` 设计，响应式布局
+- 后台管理基于[**若依管理系统**](https://ruoyi.vip/)二次开发
+- 采用 `RABC` 权限模型，使用 `Sa-Token` 进行权限管理
+- 支持代码高亮、图片预览、黑夜模式、评论、点赞等功能
+- 文章编辑使用 `Markdown` 编辑器
+
+------------------------------------
+
+## 技术栈
+
+前端： `Vue3` + `Vite4` + `Pinia` + `Vue Router` + `TypeScript` + `Axios` + `Element Plus` + `Naive UI` + `Echarts` + `Swiper`
+等
+
+后端： `SpringBoot3` + `Mysql` + `Redis` + `Thymeleaf` + `Nginx` + `Sa-Token` + `Swagger3` + `MyBatisPlus` + `RabbitMQ`
+（未实装）等
+
+------------------------------------
+
+## 运行环境
+
+服务器：华为云2核2G CentOS 7.9
+对象存储：七牛云
+
+------------------------------------
+
+## 开发环境
+
+| 开发工具    | 版本       | 说明               |
+|---------|----------|------------------|
+| IDEA    | 2023.1.2 | JAVA及VUE开发工具IDE  |
+| navicat | 16.0.11  | MYSQL操作工具        |
+| tabby   | /        | Linux连接工具，附ftp功能 |
+
+| 开发环境       | 版本     |
+|------------|--------|
+| OpenJDK    | 17     |
+| Redis      | 7.0    |
+| vue        | 3.2.47 |
+| vite       | 4.2.1  |
+| springboot | 3.0.4  |

@@ -74,6 +74,8 @@ export default defineConfig({
   server: {
     //端口
     port: 8081,
+    //主机名
+    host: '0.0.0.0',
     //若端口被占用，则自动尝试下一个可用的端口
     strictPort: false,
     //服务启动后自动在浏览器打开

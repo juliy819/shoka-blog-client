@@ -77,7 +77,6 @@ const classifyList = ref<FavouriteClassify[]>([]);
  */
 const parseSVG = (icon: string, regx: RegExp): string | null => {
   const match = icon.match(regx);
-  console.log(match);
   return match ? match[1] : null;
 };
 

@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import { useResizeObserver } from '@vueuse/core';
-import * as echarts from 'echarts';
+import echarts from '@/utils/echarts';
 
 //获取 dom 和 父组件数据 并定义"myChart"用于初始化图表
 const chartDom = ref<HTMLElement>();
@@ -44,11 +44,11 @@ onMounted(() => {
 
 //监听图表数据时候变化，重新渲染图表
 watch(
-    () => props.options,
-    (newOptions) => {
-      myChart.value?.setOption(newOptions);
-    },
-    { deep: true }
+  () => props.options,
+  (newOptions) => {
+    myChart.value?.setOption(newOptions);
+  },
+  { deep: true }
 );
 </script>
 

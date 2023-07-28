@@ -8,6 +8,8 @@ import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import path from 'path';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import { prismjsPlugin } from 'vite-plugin-prismjs';
+import viteCompression from 'vite-plugin-compression';
+
 
 export default defineConfig({
   plugins: [
@@ -61,6 +63,14 @@ export default defineConfig({
       ],
       theme: 'tomorrow',
       css: true
+    }),
+    // 打包压缩
+    viteCompression({
+      verbose: true,
+      disable: false,
+      threshold: 10240,
+      algorithm: 'gzip',
+      ext: '.gz'
     })
   ],
   resolve: {
@@ -87,6 +97,21 @@ export default defineConfig({
         target: 'http://localhost:8080',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, '')
+      }
+    }
+  },
+  build: {
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        chunkFileNames: 'static/js/[name]-[hash].js',
+        entryFileNames: 'static/js/[name]-[hash].js',
+        assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return id.toString().split('node_modules/')[1].split('/')[0].toString();
+          }
+        }
       }
     }
   }

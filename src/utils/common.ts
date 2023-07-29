@@ -1,14 +1,18 @@
+import bg1 from '@/assets/images/bg/bg-1.jpg';
+import bg2 from '@/assets/images/bg/bg-2.jpg';
+import bg3 from '@/assets/images/bg/bg-3.jpg';
+import bg4 from '@/assets/images/bg/bg-4.jpg';
+import bg5 from '@/assets/images/bg/bg-5.jpg';
+import bg6 from '@/assets/images/bg/bg-6.jpg';
+
 /**
  * 获取随机背景图
  * @return 背景图路径
  */
 export const getRandomBgImage = (): string => {
-  // 从bg文件夹中随机获取一张图片
-  const imageList = import.meta.glob('/src/assets/images/bg/*.{jpg,png,gif}');
-  const keys = Object.keys(imageList);
-  const randomInt = Math.floor(Math.random() * keys.length);
-  // 处理路径
-  return '/src/' + keys[randomInt].slice(5);
+  const imageList = [bg1, bg2, bg3, bg4, bg5, bg6];
+  const randomInt = Math.floor(Math.random() * imageList.length);
+  return imageList[randomInt];
 };
 
 /**

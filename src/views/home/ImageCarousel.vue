@@ -13,8 +13,14 @@
 </template>
 
 <script setup lang="ts">
-const images = import.meta.glob('../../assets/images/bg/*.{jpg,png,gif}');
-const imageList = Object.keys(images).map((key) => 'src' + key.slice(5));
+import bg1 from '@/assets/images/bg/bg-1.jpg';
+import bg2 from '@/assets/images/bg/bg-2.jpg';
+import bg3 from '@/assets/images/bg/bg-3.jpg';
+import bg4 from '@/assets/images/bg/bg-4.jpg';
+import bg5 from '@/assets/images/bg/bg-5.jpg';
+import bg6 from '@/assets/images/bg/bg-6.jpg';
+
+const imageList = [bg1, bg2, bg3, bg4, bg5, bg6];
 </script>
 
 <style scoped lang="scss">

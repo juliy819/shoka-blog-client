@@ -41,32 +41,19 @@ interface Modal {
    * 警告提示
    */
   notifyWarning(message: string): void;
-
-  /**
-   * 打开遮罩层
-   */
-  loading(message: string): void;
-
-  /**
-   * 关闭遮罩层
-   */
-  closeLoading(): void;
 }
 
 export const modal: Modal = {
 
   msgInfo: (message) => {
-    // ElMessage.info(message);
     window.$message?.info(message);
   },
 
   msgError: (message) => {
-    // ElMessage.error(message);
     window.$message?.error(message);
   },
 
   msgSuccess: (message) => {
-    // ElMessage.success(message);
     window.$message?.success(message);
   },
 
@@ -75,7 +62,10 @@ export const modal: Modal = {
   },
 
   notifyInfo: (message) => {
-
+    window.$notification?.info({
+      title: '提示',
+      content: message
+    });
   },
 
   notifyError: (message) => {
@@ -86,17 +76,16 @@ export const modal: Modal = {
   },
 
   notifySuccess: (message) => {
-
+    window.$notification?.success({
+      title: '成功',
+      content: message
+    });
   },
 
   notifyWarning: (message) => {
-
-  },
-
-  loading: (message) => {
-
-  },
-
-  closeLoading: () => {
+    window.$notification?.warning({
+      title: '警告',
+      content: message
+    });
   }
 };

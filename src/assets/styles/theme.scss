@@ -143,36 +143,8 @@
   }
 }
 
-.red {
-  color: var(--color-red);
-}
-
-.pink {
-  color: var(--color-pink);
-}
-
 .orange {
   color: var(--color-orange);
-}
-
-.yellow {
-  color: var(--color-yellow);
-}
-
-.green {
-  color: var(--color-green);
-}
-
-.aqua {
-  color: var(--color-aqua);
-}
-
-.blue {
-  color: var(--color-blue);
-}
-
-.purple {
-  color: var(--color-purple);
 }
 
 .grey {
@@ -192,13 +164,13 @@
 ::-webkit-scrollbar-thumb {
   background-color: var(--color-pink-light);
   background-image: -webkit-linear-gradient(45deg,
-      hsla(0, 0%, 100%, 0.4) 25%,
-      transparent 0,
-      transparent 50%,
-      hsla(0, 0%, 100%, 0.4) 0,
-      hsla(0, 0%, 100%, 0.4) 75%,
-      transparent 0,
-      transparent);
+          hsla(0, 0%, 100%, 0.4) 25%,
+          transparent 0,
+          transparent 50%,
+          hsla(0, 0%, 100%, 0.4) 0,
+          hsla(0, 0%, 100%, 0.4) 75%,
+          transparent 0,
+          transparent);
   border-radius: 2em;
 }
 

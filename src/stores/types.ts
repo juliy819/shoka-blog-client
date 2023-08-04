@@ -53,10 +53,6 @@ export interface AppState {
   passwordFrame: boolean;
 }
 
-export interface ArticleState {
-
-}
-
 /**
  * 用户
  */

@@ -159,8 +159,8 @@ const articleHref = window.location.href;
 const route = useRoute();
 const { userStore, blogStore, appStore } = useStore();
 const articleRef = ref();
-const wordNum = ref<number>();
-const readTime = ref<number>();
+const wordNum = ref<number>(0);
+const readTime = ref<number>(0);
 const commentType = 1;
 const article = ref<ArticleInfo>({
   id: 0,
@@ -202,9 +202,9 @@ const formatWordNum = (value: number) => {
  */
 const deleteHTMLTag = (content: string) => {
   return content
-      .replace(/<\/?[^>]*>/g, '')
-      .replace(/[|]*\n/, '')
-      .replace(/&npsp;/gi, '');
+    .replace(/<\/?[^>]*>/g, '')
+    .replace(/[|]*\n/, '')
+    .replace(/&npsp;/gi, '');
 };
 
 const like = () => {
@@ -220,7 +220,8 @@ const like = () => {
       article.value.likeCount += 1;
     }
     userStore.articleLike(articleId);
-  }).catch(() => {});
+  }).catch(() => {
+  });
 };
 
 onMounted(() => {

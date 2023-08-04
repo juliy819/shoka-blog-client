@@ -603,9 +603,4 @@ onMounted(() => {
   animation-direction: alternate;
   animation-timing-function: linear;
 }
-
-// 添加星星闪烁动画
-.twinkle {
-  transform: scale(0);
-}
 </style>

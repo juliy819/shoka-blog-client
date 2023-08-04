@@ -11,7 +11,7 @@
   <div class="catalog-content">
     <div class="catalog-item" v-for="(anchor, index) of titleList" :key="index"
          :class="currentIndex === index ? 'active' : ''" :style="{ paddingLeft: `${5 + anchor.indent * 15}px` }"
-         @click="handleAnchorClick(anchor, index)">
+         @click="handleAnchorClick(anchor)">
       <a>{{ anchor.title }}</a>
     </div>
   </div>
@@ -41,7 +41,7 @@ const getTitlesFromDom = () => {
     titleList.value = [];
   }
   const hTags = Array.from(new Set(titles.map((t: any) => t.tagName))).sort();
-  titleList.value = titles.map((el: any, idx: number) => {
+  titleList.value = titles.map((el: any) => {
     return {
       title: el.innerText,
       lineIndex: el.getAttribute('data-v-md-line'),
@@ -50,14 +50,13 @@ const getTitlesFromDom = () => {
   });
 };
 
-const handleAnchorClick = (anchor: any, index: number) => {
+const handleAnchorClick = (anchor: any) => {
   const heading = props.domRef.$el.querySelector(`[data-v-md-line="${anchor.lineIndex}"]`);
   if (heading) {
     window.scrollTo({
       behavior: 'smooth',
       top: heading.offsetTop - 20
     });
-    // setTimeout(() => currentIndex.value = index, 400);
   }
 };
 

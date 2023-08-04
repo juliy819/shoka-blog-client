@@ -58,7 +58,9 @@ onMounted(() => {
     } else {
       status.value = 2;
     }
-  }).catch(() => { status.value = -1; });
+  }).catch(() => {
+    status.value = -1;
+  });
 
 });
 </script>
@@ -116,10 +118,6 @@ onMounted(() => {
     margin: 0.125rem 0;
     color: #fff;
     z-index: 1;
-  }
-
-  &::after {
-
   }
 }
 

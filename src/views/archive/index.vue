@@ -61,7 +61,7 @@ const archivesList = ref<Archives[]>([]);
 watch(
   () => queryParams.value.current,
   () => {
-    archivesApi.getArchivesList(queryParams.value).then(({ data }) => {
+    archivesApi.getArchiveList(queryParams.value).then(({ data }) => {
       archivesList.value = data.data.recordList;
       count.value = data.data.count;
     });
@@ -69,7 +69,7 @@ watch(
 );
 
 onMounted(() => {
-  archivesApi.getArchivesList(queryParams.value).then(({ data }) => {
+  archivesApi.getArchiveList(queryParams.value).then(({ data }) => {
     archivesList.value = data.data.recordList;
     count.value = data.data.count;
     if (count.value > 0) {
@@ -77,7 +77,9 @@ onMounted(() => {
     } else {
       status.value = 2;
     }
-  }).catch(() => {status.value = -1;});
+  }).catch(() => {
+    status.value = -1;
+  });
 });
 
 </script>

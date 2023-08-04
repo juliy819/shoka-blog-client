@@ -50,9 +50,6 @@ const NaiveProviderContent = defineComponent({
   name: 'NaiveProviderContent',
   setup() {
     registerNaiveTools();
-  },
-  render() {
-    return h('div');
   }
 });
 </script>

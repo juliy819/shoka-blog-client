@@ -28,11 +28,10 @@ import type { CommentForm } from '@/api/comment/types';
 import useStore from '@/stores';
 import emojiList from '@/utils/emoji';
 import { modal } from '@/utils/modal';
-import Emoji from '@/components/Emoji.vue';
 import { ref } from 'vue';
 import commentApi from '@/api/comment';
 
-const { userStore, blogStore, appStore } = useStore();
+const { userStore, blogStore } = useStore();
 const inputActiveClass = {
   lineHeight: 'normal',
   borderColor: '#ed6ea0',
@@ -63,7 +62,7 @@ const commentForm = ref<CommentForm>({
   commentContent: ''
 });
 const placeholderText = computed(() =>
-    nickname.value ? `回复 @${nickname.value}：` : '发一条友善的评论'
+  nickname.value ? `回复 @${nickname.value}：` : '发一条友善的评论'
 );
 const isContentEmpty = computed(() => commentContent.value.length === 0);
 
@@ -83,9 +82,9 @@ const handleAdd = () => {
   commentForm.value.commentContent = commentContent.value.replace(/\[.+?]/g, (str) => {
     if (str in emojiList) {
       return (
-          '<img src= \'' +
-          emojiList[str as keyof typeof emojiList] +
-          '\' width=\'21\' height=\'21\' style=\'margin: 0 1px;vertical-align: text-bottom\' alt=""/>'
+        '<img src= \'' +
+        emojiList[str as keyof typeof emojiList] +
+        '\' width=\'21\' height=\'21\' style=\'margin: 0 1px;vertical-align: text-bottom\' alt=""/>'
       );
     }
     return str;
@@ -99,7 +98,8 @@ const handleAdd = () => {
     }
     // 重新加载评论列表
     emit('reload');
-  }).catch(() => {});
+  }).catch(() => {
+  });
 };
 
 const setReply = (flag: boolean) => {
@@ -132,10 +132,6 @@ defineExpose({ commentForm, nickname, setReply });
     margin-left: 10px;
     background-color: var(--primary-color-darker);
     color: var(--grey-0);
-  }
-
-  .send-active {
-    background-color: var(--color-pink);
   }
 }
 

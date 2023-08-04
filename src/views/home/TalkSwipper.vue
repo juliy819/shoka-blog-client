@@ -18,7 +18,7 @@
         </swiper>
         <n-popover trigger="hover">
           <template #trigger>
-            <n-button text @click="toTalk">
+            <n-button text @click="toTalk(undefined)">
               <svg-icon icon-class="right-arrow" class="arrow" />
             </n-button>
           </template>
@@ -51,7 +51,7 @@ const talkList = ref<TalkHome[]>([]);
 const toTalk = (id?: number): void => {
   let path = '/talk';
   if (typeof id === 'number') {
-    path += `/${ id }`;
+    path += `/${id}`;
   }
   router.push({ path: path });
 };
@@ -64,7 +64,9 @@ onMounted(() => {
     } else {
       status.value = 2;
     }
-  }).catch(() => {status.value = -1;});
+  }).catch(() => {
+    status.value = -1;
+  });
 });
 
 </script>
@@ -81,16 +83,11 @@ onMounted(() => {
   border-radius: 0.5rem;
   transition: all 0.2s ease-in-out 0s;
 
-  .talk-swiper-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
 
-.swiper-container {
-  height: 1.5625rem;
-  line-height: 1.5625rem;
+  .swiper-container {
+    height: 1.5625rem;
+    line-height: 1.5625rem;
+  }
 }
 
 .slide-content {

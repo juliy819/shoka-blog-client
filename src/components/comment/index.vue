@@ -89,9 +89,8 @@ import useStore from '@/stores';
 import { formatDateTime } from '@/utils/date';
 import { modal } from '@/utils/modal';
 import { ref } from 'vue';
-import Paging from '@/components/Paging.vue';
 
-const { userStore, appStore } = useStore();
+const { userStore } = useStore();
 const replyRef = ref<any>([]);
 const pageRef = ref<any>([]);
 const readMoreRef = ref<any>([]);
@@ -105,7 +104,7 @@ const emit = defineEmits(['getCommentCount']);
 const screenWidth = ref(window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
 const maxEllipsisWidth = ref('30rem');
 const typeId = computed(() => Number(useRoute().params.id) ? Number(useRoute().params.id) : undefined);
-const isLike = computed(() => (id: number) => userStore.commentLikeSet.indexOf(id) !== -1 ? 'like-flag' : '');
+const isLike = computed(() => (id: number) => userStore.commentLikeSet.indexOf(id) !== -1 ? 'active' : '');
 const commentList = ref<Comment[]>([]);
 const refresh = ref(true);
 const count = ref(0);
@@ -133,7 +132,8 @@ const like = (comment: Comment | Reply): void => {
       comment.likeCount += 1;
     }
     userStore.commentLike(id);
-  }).catch(() => {});
+  }).catch(() => {
+  });
 };
 
 /**
@@ -149,7 +149,8 @@ const getMoreReplies = (index: number, comment: Comment): void => {
     }
     // 隐藏'查看更多'
     readMoreRef.value[index].style.display = 'none';
-  }).catch(() => {});
+  }).catch(() => {
+  });
 };
 
 /**
@@ -161,7 +162,8 @@ const getMoreReplies = (index: number, comment: Comment): void => {
 const getCurrentPage = (current: number, index: number, commentId: number): void => {
   commentApi.getReplyList(commentId, { current: current, size: 5 }).then(({ data }) => {
     commentList.value[index].replyList = data.data;
-  }).catch(() => {});
+  }).catch(() => {
+  });
 };
 
 /**
@@ -196,7 +198,8 @@ const getList = (): void => {
     commentQuery.value.current++;
     count.value = data.data.count;
     emit('getCommentCount', count.value);
-  }).catch(() => {});
+  }).catch(() => {
+  });
 };
 
 /**
@@ -226,31 +229,32 @@ const reloadReplies = (index: number) => {
     }
     // 隐藏查看更多
     readMoreRef.value[index].style.display = 'none';
-  }).catch(() => {});
+  }).catch(() => {
+  });
 };
 
 // 刷新评论列表
 watch(
-    commentList,
-    () => {
-      refresh.value = false;
-      nextTick(() => {
-        refresh.value = true;
-      });
-    },
-    { deep: false }
+  commentList,
+  () => {
+    refresh.value = false;
+    nextTick(() => {
+      refresh.value = true;
+    });
+  },
+  { deep: false }
 );
 
 // 更新省略文本的最大宽度
 watch(
-    screenWidth,
-    () => {
-      if (screenWidth.value < 768) {
-        maxEllipsisWidth.value = '15rem';
-      } else {
-        maxEllipsisWidth.value = '30rem';
-      }
+  screenWidth,
+  () => {
+    if (screenWidth.value < 768) {
+      maxEllipsisWidth.value = '15rem';
+    } else {
+      maxEllipsisWidth.value = '30rem';
     }
+  }
 );
 
 onMounted(() => {
@@ -357,7 +361,7 @@ onMounted(() => {
     margin-right: 17px;
     cursor: pointer;
 
-    &:hover .like {
+    &:hover .like, .active {
       color: var(--primary-color);
     }
   }

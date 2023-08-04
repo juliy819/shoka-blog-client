@@ -32,15 +32,17 @@ const { appStore } = useStore();
 const commentList = ['article', 'friend', 'talkInfo'];
 const commentShow = computed(() => (value: string) => commentList.includes(value));
 
+// 监听滚动，记录当前页面浏览进度
 useEventListener(document, 'scroll', () => {
   process.value = Number(
-      (
-          (window.pageYOffset /
-              (document.documentElement.scrollHeight - window.innerHeight)) *
-          100
-      ).toFixed(0)
+    (
+      (window.scrollY /
+        (document.documentElement.scrollHeight - window.innerHeight)) *
+      100
+    ).toFixed(0)
   );
 });
+
 const handleSide = () => {
   appStore.rightContainer = !appStore.rightContainer;
 };

@@ -2,7 +2,7 @@ import type { ArchivesApi } from '@/api/archives/types';
 import request from '@/utils/request';
 
 const archivesApi: ArchivesApi = {
-  getArchivesList(pageQuery) {
+  getArchiveList(pageQuery) {
     return request({
       url: '/article/archives/list',
       method: 'get',

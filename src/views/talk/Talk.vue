@@ -71,7 +71,7 @@ import { getRandomBgImage } from '@/utils/common';
 
 const bgImage = getRandomBgImage();
 const route = useRoute();
-const { userStore, appStore } = useStore();
+const { userStore } = useStore();
 const status = ref<number>(0);
 const commentCount = ref<number>(0);
 const commentType = ref<number>(3);
@@ -87,7 +87,7 @@ const talk = ref<Talk>({
   createTime: ''
 });
 
-const isLike = computed(() => (id: number) => userStore.talkLikeSet.indexOf(id) != -1 ? 'like-flag' : '');
+const isLike = computed(() => (id: number) => userStore.talkLikeSet.indexOf(id) != -1 ? 'active' : '');
 
 const getCommentCount = (count: number) => {
   commentCount.value = count;
@@ -106,7 +106,8 @@ const like = () => {
       talk.value.likeCount += 1;
     }
     userStore.talkLike(id);
-  }).catch(() => {});
+  }).catch(() => {
+  });
 };
 
 const toComment = () => {
@@ -121,7 +122,9 @@ onMounted(() => {
   talkApi.getTalk(Number(route.params.id)).then(({ data }) => {
     talk.value = data.data;
     status.value = 1;
-  }).catch(() => {status.value = -1;});
+  }).catch(() => {
+    status.value = -1;
+  });
 });
 </script>
 
@@ -161,5 +164,9 @@ onMounted(() => {
 
 .talk-like, .talk-comment {
   cursor: pointer;
+}
+
+.talk-like .active {
+  color: var(--primary-color);
 }
 </style>

@@ -66,18 +66,6 @@ li {
   list-style: none;
 }
 
-.clearfix:after {
-  visibility: hidden;
-  clear: both;
-  display: block;
-  content: ".";
-  height: 0;
-}
-
-.clearfix {
-  zoom: 1;
-}
-
 .mb5 {
   margin-bottom: 0.3125rem;
 }
@@ -100,10 +88,6 @@ li {
 
 .mt5 {
   margin-top: 0.3125rem;
-}
-
-.mt8 {
-  margin-top: 0.5rem;
 }
 
 .mt10 {

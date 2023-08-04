@@ -1,9 +1,5 @@
 @use './mixin';
 
-.load-fail {
-  color: var(--grey-4);
-}
-
 // 主容器
 .main-container {
   display: flex;
@@ -301,11 +297,6 @@
     color: var(--grey-0) !important;
     background-image: linear-gradient(to right, var(--color-pink) 0, var(--color-orange) 100%);
   }
-}
-
-/* 点赞 */
-.like-flag {
-  color: var(--primary-color);
 }
 
 /** 说说 */

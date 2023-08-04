@@ -6,7 +6,7 @@ export interface ArchivesApi {
    * 查看文章归档
    * @param pageQuery 查询条件
    */
-  getArchivesList(pageQuery: PageQuery): AxiosPromise<Result<PageResult<Archives[]>>>;
+  getArchiveList(pageQuery: PageQuery): AxiosPromise<Result<PageResult<Archives[]>>>;
 }
 
 /**

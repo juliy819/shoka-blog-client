@@ -19,13 +19,13 @@
         {{ menuItem.title }}
       </router-link>
       <!-- 多级菜单项 -->
-      <div v-else class="sub-menu">
+      <div v-else class="sub-menu" @mouseover="showDropdown(index)" @mouseleave="hideDropdown(index)">
         <a class="sub-menu-title">
           <svg-icon :icon-class="menuItem.icon" />
           {{ menuItem.title }}
         </a>
         <!-- 下拉列表项 -->
-        <ul class="sub-menu-dropdown">
+        <ul :class="{ 'sub-menu-dropdown': true, 'hidden': isDropdownHidden[index] }">
           <li v-for="(subItem, index) in menuItem.children as MenuItem[]" :key="index"
               :class="{ active: route.path === subItem.path }" class="sub-menu-item">
             <router-link :to="subItem.path" class="sub-menu-link">
@@ -73,11 +73,30 @@ import { menuList } from '@/config/menu';
 const route = useRoute();
 const { blogStore, userStore, appStore } = useStore();
 
+const isDropdownHidden = ref<Boolean[]>([]);
+isDropdownHidden.value = Array(menuList.length).fill(true);
+
+/**
+ * 显示下拉菜单
+ */
+const showDropdown = (index: number) => {
+  isDropdownHidden.value[index] = false;
+};
+
+/**
+ * 隐藏下拉菜单
+ */
+const hideDropdown = (index: number) => {
+  isDropdownHidden.value[index] = true;
+};
+
+/**
+ * 注销
+ */
 const logout = () => {
   userStore.logout();
   modal.msgSuccess('注销成功');
 };
-
 
 </script>
 
@@ -115,7 +134,8 @@ const logout = () => {
   }
 
   &:hover .sub-menu-dropdown {
-    display: block;
+    opacity: 1;
+    transform: translateY(0);
 
     .sub-menu-item {
       animation: showList 0.5s ease-in-out forwards;
@@ -129,7 +149,7 @@ const logout = () => {
 }
 
 .sub-menu-dropdown {
-  display: none;
+  //display: none;
   position: absolute;
   width: max-content;
   margin-top: 0.5rem;
@@ -137,9 +157,7 @@ const logout = () => {
   background: var(--grey-9-a5);
   box-shadow: 0 0.3125rem 1.25rem -0.25rem var(--grey-9-a1);
   border-radius: 0.625rem 0;
-
-  transform-origin: top;
-  animation: slideDown 0.3s;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 
   // 在弹出框上边加个矩形，延长hover触发区域
   &::before {
@@ -150,15 +168,11 @@ const logout = () => {
     height: 2.5rem;
     content: "";
   }
-}
 
-// 子菜单向下展开动画
-@keyframes slideDown {
-  0% {
-    transform: scale(1, 0);
-  }
-  100% {
-    transform: scale(1, 1);
+  &.hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
   }
 }
 

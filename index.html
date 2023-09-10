@@ -11,24 +11,36 @@
 <div id="app">
   <!-- 动画节点 -->
   <div id="loader-wrapper">
-    <div id="loader"></div>
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
-    <div class="load_title">正在加载系统,请耐心等待</div>
+    <div class="loader">
+      <div class="loader-spinner"></div>
+    </div>
+    <div class="loader-section"></div>
+    <div class="loader-title">加载中,请稍候</div>
   </div>
 </div>
 <script src="./src/main.ts" type="module"></script>
 </body>
 
-<style>
-    html,
-    body,
-    #app {
-        height: 100%;
-        margin: 0;
-        padding: 0;
+<script>
+  /**
+   * 生成旋转元素
+   * @param container 容器
+   * @param depth 生成深度（数量）
+   */
+  function generateSpinner(container, depth) {
+    const spinner = document.createElement('div');
+    spinner.classList.add('loader-spinner');
+    if (depth > 1) {
+      generateSpinner(spinner, depth - 1);
     }
+    container.appendChild(spinner);
+  }
 
+  const loaderContainer = document.querySelector('#loader-wrapper .loader .loader-spinner');
+  generateSpinner(loaderContainer, 10);
+</script>
+
+<style>
     #loader-wrapper {
         position: fixed;
         top: 0;
@@ -38,146 +50,55 @@
         z-index: 999999;
     }
 
-    #loader {
-        display: block;
-        position: relative;
-        left: 50%;
-        top: 50%;
+    .loader {
         width: 150px;
         height: 150px;
+        top: 50%;
+        left: 50%;
+        position: relative;
         margin: -75px 0 0 -75px;
-        border-radius: 50%;
-        border: 3px solid transparent;
-        /* COLOR 1 */
-        border-top-color: #FFF;
-        -webkit-animation: spin 2s linear infinite;
-        /* Chrome, Opera 15+, Safari 5+ */
-        -moz-animation: spin 2s linear infinite;
-        /* Chrome, Opera 15+, Safari 5+ */
-        -o-animation: spin 2s linear infinite;
-        /* Chrome, Opera 15+, Safari 5+ */
-        animation: spin 2s linear infinite;
-        /* Chrome, Firefox 16+, IE 10+, Opera */
+        overflow: hidden;
         z-index: 1001;
     }
 
-    #loader:before {
-        content: "";
+    .loader-spinner {
         position: absolute;
-        top: 5px;
-        left: 5px;
-        right: 5px;
-        bottom: 5px;
+        width: calc(100% - 10px);
+        height: calc(100% - 10px);
+        border: 5px solid transparent;
+        border-top-color: #fff;
         border-radius: 50%;
-        border: 3px solid transparent;
-        /* COLOR 2 */
-        border-top-color: #FFF;
-        -webkit-animation: spin 3s linear infinite;
-        /* Chrome, Opera 15+, Safari 5+ */
-        -moz-animation: spin 3s linear infinite;
-        /* Chrome, Opera 15+, Safari 5+ */
-        -o-animation: spin 3s linear infinite;
-        /* Chrome, Opera 15+, Safari 5+ */
-        animation: spin 3s linear infinite;
-        /* Chrome, Firefox 16+, IE 10+, Opera */
-    }
-
-    #loader:after {
-        content: "";
-        position: absolute;
-        top: 15px;
-        left: 15px;
-        right: 15px;
-        bottom: 15px;
-        border-radius: 50%;
-        border: 3px solid transparent;
-        border-top-color: #FFF;
-        /* COLOR 3 */
-        -moz-animation: spin 1.5s linear infinite;
-        /* Chrome, Opera 15+, Safari 5+ */
-        -o-animation: spin 1.5s linear infinite;
-        /* Chrome, Opera 15+, Safari 5+ */
-        -webkit-animation: spin 1.5s linear infinite;
-        /* Chrome, Opera 15+, Safari 5+ */
-        animation: spin 1.5s linear infinite;
-        /* Chrome, Firefox 16+, IE 10+, Opera */
+        -webkit-animation: spin 5s cubic-bezier(0.17, 0.49, 0.96, 0.76) infinite;
+        animation: spin 5s cubic-bezier(0.17, 0.49, 0.96, 0.76) infinite;
     }
 
     @-webkit-keyframes spin {
-        0% {
-            -ms-transform: rotate(0deg);
-            /* IE 9 */
+        from {
             transform: rotate(0deg);
-            /* Firefox 16+, IE 10+, Opera */
         }
-        100% {
-            -ms-transform: rotate(360deg);
-            /* IE 9 */
+        to {
             transform: rotate(360deg);
-            /* Firefox 16+, IE 10+, Opera */
         }
     }
 
     @keyframes spin {
-        0% {
-            -ms-transform: rotate(0deg);
-            /* IE 9 */
+        from {
             transform: rotate(0deg);
-            /* Firefox 16+, IE 10+, Opera */
         }
-        100% {
-            -ms-transform: rotate(360deg);
-            /* IE 9 */
+        to {
             transform: rotate(360deg);
-            /* Firefox 16+, IE 10+, Opera */
         }
     }
 
     #loader-wrapper .loader-section {
         position: fixed;
         top: 0;
-        width: 51%;
+        width: 100%;
         height: 100%;
         background: #7171C6;
-        /* Old browsers */
         z-index: 1000;
         -ms-transform: translateX(0);
-        /* IE 9 */
         transform: translateX(0);
-        /* Firefox 16+, IE 10+, Opera */
-    }
-
-    #loader-wrapper .loader-section.section-left {
-        left: 0;
-    }
-
-    #loader-wrapper .loader-section.section-right {
-        right: 0;
-    }
-
-    /* Loaded */
-    .loaded #loader-wrapper .loader-section.section-left {
-        -ms-transform: translateX(-100%);
-        /* IE 9 */
-        transform: translateX(-100%);
-        /* Firefox 16+, IE 10+, Opera */
-        -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
-        transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
-    }
-
-    .loaded #loader-wrapper .loader-section.section-right {
-        -ms-transform: translateX(100%);
-        /* IE 9 */
-        transform: translateX(100%);
-        /* Firefox 16+, IE 10+, Opera */
-        -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
-        transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
-    }
-
-    .loaded #loader {
-        opacity: 0;
-        -webkit-transition: all 0.3s ease-out;
-        transition: all 0.3s ease-out;
     }
 
     .loaded #loader-wrapper {
@@ -190,16 +111,7 @@
         transition: all 0.3s 1s ease-out;
     }
 
-    /* JavaScript Turned Off */
-    .no-js #loader-wrapper {
-        display: none;
-    }
-
-    .no-js h1 {
-        color: #222222;
-    }
-
-    #loader-wrapper .load_title {
+    #loader-wrapper .loader-title {
         font-family: 'Open Sans', serif;
         color: #FFF;
         font-size: 19px;
@@ -207,12 +119,12 @@
         text-align: center;
         z-index: 9999999999999;
         position: absolute;
-        top: 60%;
+        top: 65%;
         opacity: 1;
         line-height: 30px;
     }
 
-    #loader-wrapper .load_title span {
+    #loader-wrapper .loader-title span {
         font-weight: normal;
         font-style: italic;
         font-size: 13px;

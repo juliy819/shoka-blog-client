@@ -1,6 +1,6 @@
 export interface MenuItem {
   title: string,
-  path: string | undefined,
+  path: string,
   icon: string,
   children?: MenuItem[]
 }
@@ -13,7 +13,7 @@ export const menuList: MenuItem[] = [
   },
   {
     title: '文章',
-    path: undefined,
+    path: '',
     icon: 'article',
     children: [
       {

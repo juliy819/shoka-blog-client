@@ -11,9 +11,10 @@
         {{ blogStore.siteConfig.siteName === undefined ? 'shoka-blog' : blogStore.siteConfig.siteName }}
       </router-link>
     </div>
-    <div v-for="(menuItem, index) in menuList" :key="index" class="menu-item">
+    <div v-for="(menuItem, index) in menuList" :key="index" class="menu-item"
+         :class="{ active: route.path === menuItem.path }">
       <!-- 一级菜单项 -->
-      <router-link v-if="menuItem.children === undefined" :to="menuItem.path as RouteRecordRaw" class="menu-btn">
+      <router-link v-if="menuItem.children === undefined" :to="menuItem.path" class="menu-btn">
         <svg-icon :icon-class="menuItem.icon" />
         {{ menuItem.title }}
       </router-link>
@@ -27,7 +28,7 @@
         <ul class="sub-menu-dropdown">
           <li v-for="(subItem, index) in menuItem.children as MenuItem[]" :key="index"
               :class="{ active: route.path === subItem.path }" class="sub-menu-item">
-            <router-link :to="subItem.path as RouteRecordRaw" class="sub-menu-link">
+            <router-link :to="subItem.path" class="sub-menu-link">
               <svg-icon :icon-class="subItem.icon" />
               {{ subItem.title }}
             </router-link>
@@ -68,7 +69,6 @@ import useStore from '@/stores';
 import { modal } from '@/utils/modal';
 import type { MenuItem } from '@/config/menu';
 import { menuList } from '@/config/menu';
-import type { RouteRecordRaw } from 'vue-router';
 
 const route = useRoute();
 const { blogStore, userStore, appStore } = useStore();

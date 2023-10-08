@@ -21,7 +21,7 @@
         </div>
       </template>
       <template #loading>
-        <n-skeleton round text repeat="2" />
+        <n-skeleton round text :repeat="2" />
       </template>
     </load-viewer>
   </div>

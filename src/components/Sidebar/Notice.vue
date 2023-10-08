@@ -14,7 +14,7 @@
         <div class="notice-content" v-html="blogStore.siteConfig.siteNotice" />
       </template>
       <template #loading>
-        <n-skeleton text round repeat="3" />
+        <n-skeleton text round :repeat="3" />
       </template>
     </load-viewer>
   </div>

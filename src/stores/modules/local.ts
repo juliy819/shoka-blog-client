@@ -83,6 +83,13 @@ const useLocalStore = defineStore('useLocalStore', {
         });
       }
 
+      // 替换图片路径
+      articleContent = articleContent.replace(/(!\[.*])\((.*)\)/g, (match, p1, p2) => {
+        let imgName = p2.substring(p2.lastIndexOf('/') + 1);
+        console.log(`${p1}(${getImgUrl(imgName)})`);
+        return `${p1}(${getImgUrl(imgName)})`;
+      });
+
       const category = this.addCategory(frontMatter.category, index);
       const tags: Tag[] = [];
       frontMatter.tags.forEach((tag) => {

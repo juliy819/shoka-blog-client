@@ -74,7 +74,7 @@ import tagApi from '@/api/tag';
 import { formatDate } from '@/utils/date';
 import MyImage from '@/components/MyImage.vue';
 import { getRandomBgImage } from '@/utils/common';
-import Pagination from '@/components/Pagination.vue';
+import pagination from '@/components/Pagination.vue';
 
 const bgImage = getRandomBgImage();
 const route = useRoute();
@@ -88,6 +88,15 @@ const articleQuery = ref<ArticleQuery>({
   categoryId: 0,
   tagId: Number(route.params.id)
 });
+
+watch(
+  () => articleQuery.value.current,
+  () => {
+    tagApi.getTagArticleList(articleQuery.value).then(({ data }) => {
+      articleList.value = data.data.articleConditionList;
+    }).catch(() => {articleList.value = [];});
+  }
+);
 
 onMounted(() => {
   tagApi.countTagArticles(articleQuery.value).then(({ data }) => {

@@ -19,7 +19,7 @@
 <script lang="ts" setup>
 import useStore from '@/stores';
 import EasyTyper from 'easy-typer-js';
-import hitokoto from '@/assets/hitokoto.json';
+import hitokoto from '@/assets/json/hitokoto.json';
 
 const obj = reactive({
   output: '',

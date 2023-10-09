@@ -30,6 +30,11 @@ interface ImportMetaEnv {
    * gitee地址
    */
   readonly VITE_GITEE_URL: string;
+
+  /**
+   * 启动模式 ('FULL' / 'LOCAL')
+   */
+  readonly VITE_START_MODE: string;
 }
 
 interface ImportMeta {

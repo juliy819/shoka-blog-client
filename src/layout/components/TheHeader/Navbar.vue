@@ -11,7 +11,7 @@
         {{ blogStore.siteConfig.siteName === undefined ? 'shoka-blog' : blogStore.siteConfig.siteName }}
       </router-link>
     </div>
-    <div v-for="(menuItem, index) in menuList" :key="index" class="menu-item"
+    <div v-for="(menuItem, index) in menus" :key="index" class="menu-item"
          :class="{ active: route.path === menuItem.path }">
       <!-- 一级菜单项 -->
       <router-link v-if="menuItem.children === undefined" :to="menuItem.path" class="menu-btn">
@@ -37,7 +37,7 @@
       </div>
     </div>
     <!-- 登录 -->
-    <div class="menu-item sub-menu">
+    <div class="menu-item sub-menu" v-if="!appStore.local">
       <a v-if="!userStore.id" class="menu-btn" @click="appStore.showLoginFrame()">
         <svg-icon icon-class="user" />
         登录
@@ -68,10 +68,12 @@
 import useStore from '@/stores';
 import { modal } from '@/utils/modal';
 import type { MenuItem } from '@/config/menu';
-import { menuList } from '@/config/menu';
+import { localMenuList, menuList } from '@/config/menu';
 
 const route = useRoute();
 const { blogStore, userStore, appStore } = useStore();
+
+const menus: MenuItem[] = appStore.local ? localMenuList : menuList;
 
 const isDropdownHidden = ref<Boolean[]>([]);
 isDropdownHidden.value = Array(menuList.length).fill(true);

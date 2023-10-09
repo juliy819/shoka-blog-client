@@ -77,7 +77,7 @@ onMounted(() => {
 .talk-swiper {
   @include mixin.hover-card;
 
-  margin: 0 0.5rem;
+  margin: 0.5rem;
   padding: 0.6rem 1rem;
   font-size: 0.9375rem;
   border-radius: 0.5rem;

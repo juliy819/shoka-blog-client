@@ -43,7 +43,7 @@
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
     "@types/js-cookie": "^3.0.3",
-    "@types/node": "^18.15.11",
+    "@types/node": "^20.8.3",
     "@types/nprogress": "^0.2.0",
     "@types/prismjs": "^1.26.0",
     "@vitejs/plugin-vue": "^4.1.0",

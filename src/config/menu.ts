@@ -55,6 +55,29 @@ export const menuList: MenuItem[] = [
   }
 ];
 
+export const localMenuList: MenuItem[] = [
+  {
+    title: '首页',
+    path: '/',
+    icon: 'home'
+  },
+  {
+    title: '分类',
+    path: '/category',
+    icon: 'category'
+  },
+  {
+    title: '标签',
+    path: '/tag',
+    icon: 'tag'
+  },
+  {
+    title: '关于',
+    path: '/about',
+    icon: 'plane'
+  }
+];
+
 export const sideMenuList = [
   {
     name: '首页',
@@ -90,6 +113,29 @@ export const sideMenuList = [
     name: '留言板',
     icon: 'message',
     path: '/message'
+  },
+  {
+    name: '关于',
+    icon: 'plane',
+    path: '/about'
+  }
+];
+
+export const localSideMenuList = [
+  {
+    name: '首页',
+    icon: 'home',
+    path: '/'
+  },
+  {
+    name: '分类',
+    icon: 'category',
+    path: '/category'
+  },
+  {
+    name: '标签',
+    icon: 'tag',
+    path: '/tag'
   },
   {
     name: '关于',

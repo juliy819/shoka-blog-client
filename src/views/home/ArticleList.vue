@@ -69,10 +69,10 @@ import type { Article } from '@/api/article/types';
 import type { PageQuery } from '@/model';
 import articleApi from '@/api/article';
 import { formatDate } from '@/utils/date';
-import Pagination from '@/components/Pagination.vue';
+import pagination from '@/components/Pagination.vue';
 import useStore from '@/stores';
 
-const { blogStore } = useStore();
+const { blogStore, appStore } = useStore();
 const articleList = ref<Article[]>([]);
 const pageQuery = ref<PageQuery>({ current: 1, size: 5 });
 const count = ref(0);
@@ -115,7 +115,7 @@ onMounted(async () => {
   @include mixin.hover-card;
   display: flex;
   height: 14rem;
-  margin: 1.25rem 0.5rem 0;
+  margin: 0.625rem 0.5rem;
   border-radius: 0.625rem;
   animation-duration: 0.5s;
   transition: all 0.2s ease-in-out 0s;
@@ -153,7 +153,7 @@ onMounted(async () => {
     .article-btn {
       left: 0;
       right: auto;
-      border-radius: 0 1rem;
+      border-radius: 0 1rem 0 0.625rem;
       background-image: linear-gradient(to right, var(--color-orange) 0, var(--color-pink) 100%);
     }
   }
@@ -230,7 +230,7 @@ onMounted(async () => {
   bottom: 0;
   right: 0;
   padding: 0.3rem 1rem;
-  border-radius: 1rem 0;
+  border-radius: 1rem 0 0.625rem 0;
   color: var(--grey-0);
   background-image: linear-gradient(to right, var(--color-pink) 0, var(--color-orange) 100%);
   transition: scale 0.2s ease-in-out;

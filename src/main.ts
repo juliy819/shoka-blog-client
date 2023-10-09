@@ -1,6 +1,5 @@
 import { createApp } from 'vue';
-import { createPinia } from 'pinia';
-import piniaPersist from 'pinia-plugin-persist';
+import pinia from '@/stores/store';
 import SvgIcon from '@/components/SvgIcon.vue';
 import 'nprogress/nprogress.css';
 import 'virtual:svg-icons-register';
@@ -28,7 +27,7 @@ import VueViewer from 'v-viewer';
 import 'viewerjs/dist/viewer.css';
 
 const app = createApp(App);
-const pinia = createPinia();
+// const pinia = createPinia();
 
 app.directive('animate', animate);
 
@@ -36,7 +35,7 @@ VMdPreview.use(vuepressTheme, { Prism })
   .use(createTodoListPlugin())
   .use(createEmojiPlugin());
 
-pinia.use(piniaPersist);
+// pinia.use(piniaPersist);
 app.use(pinia);
 app.use(router);
 app.use(VMdPreview);

@@ -4,7 +4,7 @@
  * @date 2023/4/5 17:06
 -->
 <template>
-  <div class="side-card">
+  <div class="side-card" v-if="!useAppStore().local">
     <div class="card-title">
       <svg-icon icon-class="web" size="1.1875rem" />
       网站信息
@@ -31,6 +31,7 @@
 
 import useStore from '@/stores';
 import dayjs from 'dayjs';
+import useAppStore from '@/stores/modules/app';
 
 const { blogStore } = useStore();
 const runTime = ref('');

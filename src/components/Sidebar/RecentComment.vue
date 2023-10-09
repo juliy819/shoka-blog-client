@@ -4,7 +4,7 @@
  * @date 2023/4/5 17:05
 -->
 <template>
-  <div class="side-card">
+  <div class="side-card" v-if="!useAppStore().local">
     <div class="card-title">
       <svg-icon icon-class="comment" size="1.1875rem" />
       最新评论
@@ -47,6 +47,7 @@ import { ref } from 'vue';
 import type { RecentComment } from '@/api/comment/types';
 import commentApi from '@/api/comment';
 import { formatDate } from '@/utils/date';
+import useAppStore from '@/stores/modules/app';
 
 const commentList = ref<RecentComment[]>([]);
 const status = ref<number>(0);

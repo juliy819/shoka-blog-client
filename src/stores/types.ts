@@ -1,7 +1,17 @@
+import type { Article, ArticleInfo } from '@/api/article/types';
+import type { Category } from '@/api/category/types';
+import type { Tag } from '@/api/tag/types';
+
 /**
  * 应用
  */
 export interface AppState {
+
+  /**
+   * 本地模式
+   */
+  local: boolean;
+
   /**
    * 侧边栏
    */
@@ -116,6 +126,43 @@ export interface UserState {
    * 说说点赞集合
    */
   talkLikeSet: number[];
+}
+
+/**
+ * 本地模式
+ */
+export interface LocalState {
+
+  /**
+   * 文章列表
+   */
+  articleList: Article[];
+
+  /**
+   * 文章信息列表
+   */
+  articleInfoList: ArticleInfo[];
+
+  /**
+   * 分类列表
+   */
+  categoryList: Category[];
+
+  /**
+   * 标签列表
+   */
+  tagList: Tag[];
+
+  /**
+   * 分类文章列表
+   */
+  categoryArticleList: number[][];
+
+  /**
+   * 标签文章列表
+   */
+  tagArticleList: number[][];
+
 }
 
 

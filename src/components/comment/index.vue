@@ -4,7 +4,7 @@
  * @date 2023/5/12 14:18
 -->
 <template>
-  <div id="comment-container">
+  <div id="comment-container" v-if="!useAppStore().local">
     <div class="comment-title">
       <svg-icon icon-class="comment" size="1.4rem" class="mr5" />
       评论
@@ -89,6 +89,7 @@ import useStore from '@/stores';
 import { formatDateTime } from '@/utils/date';
 import { modal } from '@/utils/modal';
 import { ref } from 'vue';
+import useAppStore from '@/stores/modules/app';
 
 const { userStore } = useStore();
 const replyRef = ref<any>([]);

@@ -16,8 +16,8 @@
 </template>
 
 <script lang="ts" setup>
-import Navbar from '@/layout/components/TheHeader/Navbar.vue';
-import Hamburger from '@/layout/components/TheHeader/Hamburger.vue';
+import navbar from '@/layout/components/TheHeader/Navbar.vue';
+import hamburger from '@/layout/components/TheHeader/Hamburger.vue';
 import { useScroll } from '@vueuse/core';
 import useStore from '@/stores';
 

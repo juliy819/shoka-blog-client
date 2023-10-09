@@ -16,9 +16,14 @@ const requests = axios.create({
   }
 });
 
+const isLocal = import.meta.env.VITE_START_MODE === 'LOCAL';
+
 // 请求拦截器
 requests.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
+    if (isLocal) {
+      return new Promise(() => {});
+    }
     // 是否需要设置token
     const isToken = (config.headers || {}).isToken === false;
     if (getToken() && !isToken) {

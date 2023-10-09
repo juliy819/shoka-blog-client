@@ -70,7 +70,7 @@ onMounted(() => {
 
 .swiper-container {
   height: 14rem;
-  margin: 1rem 0.5rem;
+  margin: 0.5rem;
   border-radius: 0.75rem;
 
   // 左上角推荐标记

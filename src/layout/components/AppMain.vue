@@ -4,7 +4,7 @@
  * @date 2023/4/2 22:07
 -->
 <template>
-  <main class="main-wrapper">
+  <main ref="main" class="main-wrapper">
     <router-view v-slot="{ Component, route }">
       <keep-alive>
         <component :is="Component" :key="route.fullPath" />
@@ -14,7 +14,15 @@
 </template>
 
 <script setup lang="ts">
+import useAppStore from '@/stores/modules/app';
 
+const main = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+  if (useAppStore().local) {
+    (main.value as HTMLElement).style.paddingBottom = '0';
+  }
+});
 </script>
 
 <style scoped lang="scss">

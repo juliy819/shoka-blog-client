@@ -147,11 +147,11 @@ export interface ArticleInfo {
   /**
    * 上一篇文章
    */
-  lastArticle: ArticleNavigation;
+  lastArticle?: ArticleNavigation;
   /**
    * 下一篇文章
    */
-  nextArticle: ArticleNavigation;
+  nextArticle?: ArticleNavigation;
   /**
    * 更新时间
    */

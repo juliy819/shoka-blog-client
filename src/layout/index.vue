@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import TheHeader from '@/layout/components/TheHeader';
+import TheHeader from '@/layout/components/TheHeader/index.vue';
 import AppMain from '@/layout/components/AppMain.vue';
 import TheFooter from '@/layout/components/TheFooter.vue';
 import SideDrawer from '@/layout/components/SideDrawer.vue';

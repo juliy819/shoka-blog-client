@@ -8,7 +8,7 @@
     <n-drawer-content style="padding-top: 0.5rem">
       <author class="side-author" :card="false" />
       <ul class="side-menu">
-        <template v-for="menu of sideMenuList" :key="menu.name">
+        <template v-for="menu of sideMenus" :key="menu.name">
           <li class="item" :class="{ active: route.path === menu.path }">
             <router-link :to="menu.path">
               <svg-icon :icon-class="menu.icon" />
@@ -45,12 +45,13 @@
 import useStore from '@/stores';
 import { useWindowSize } from '@vueuse/core';
 import { modal } from '@/utils/modal';
-import { sideMenuList } from '@/config/menu';
+import { localSideMenuList, sideMenuList } from '@/config/menu';
 
 const route = useRoute();
 const router = useRouter();
-const { appStore, blogStore, userStore } = useStore();
+const { appStore, userStore } = useStore();
 const { width } = useWindowSize();
+const sideMenus = appStore.local ? localSideMenuList : sideMenuList;
 
 const drawerVisible = computed({
   get: () => appStore.sideDrawer,

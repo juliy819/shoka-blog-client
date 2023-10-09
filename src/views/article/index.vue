@@ -7,17 +7,17 @@
   <div class="page-header">
     <div class="page-title">
       <h1 class="article-title">{{ article.articleTitle }}</h1>
-      <div class="article-time">
+      <div class="article-time" v-if="status === 1">
         <div class="first-meta">
           <span class="meta-item">
             <svg-icon icon-class="calendar" style="margin-right: 0.15rem" />
             <span class="text">发表于 {{ formatDate(article.createTime) }}</span>
           </span>
-          <span class="meta-item" v-if="article.updateTime">
+          <span class="meta-item" v-if="article.updateTime && !appStore.local">
             <svg-icon icon-class="update" style="margin-right: 0.15rem" />
             <span class="text">更新于 {{ formatDate(article.updateTime) }}</span>
           </span>
-          <span class="meta-item">
+          <span class="meta-item" v-if="!appStore.local">
             <svg-icon icon-class="eye" style="margin-right: 0.15rem" />
             <span class="text">阅读量 {{ article.viewCount }}</span>
           </span>
@@ -58,11 +58,11 @@
                 </router-link>
               </div>
 
-              <footer class="article-footer">
+              <footer class="article-footer" v-if="!appStore.local">
                 <div class="meta">
                   阅读次数 {{ article.viewCount }} 次
                 </div>
-                <div class="like">
+                <div class="like" v-if="!appStore.local">
                   <n-button class="like-btn" :class="isLike(article.id)" @click="like()">
                     <svg-icon icon-class="like" size="0.9rem" style="margin-right: 0.5rem" />
                     点赞
@@ -99,7 +99,7 @@
                   <router-link v-if="article.lastArticle" :to="`/article/${article.lastArticle.id}`" class="nav-cover"
                                :style="{ 'background-image': 'url(' + setArticleCover(article.lastArticle.articleCover) + ')' }">
                     <span class="nav-action">上一篇</span>
-                    <h3 class="nav-title">{{ article.lastArticle.articleTitle }}</h3>
+                    <h3 class="nav-title">{{ article.lastArticle!.articleTitle }}</h3>
                   </router-link>
                   <div v-else class="nav-cover">
                     <span class="nav-action">上一篇</span>
@@ -110,7 +110,7 @@
                   <router-link v-if="article.nextArticle" :to="`/article/${article.nextArticle.id}`" class="nav-cover"
                                :style="{ 'background-image': 'url(' + setArticleCover(article.nextArticle.articleCover) + ')' }">
                     <span class="nav-action">下一篇</span>
-                    <h3 class="nav-title">{{ article.nextArticle.articleTitle }}</h3>
+                    <h3 class="nav-title">{{ article.nextArticle!.articleTitle }}</h3>
                   </router-link>
                   <div v-else class="nav-cover">
                     <span class="nav-action">下一篇</span>

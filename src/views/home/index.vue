@@ -14,8 +14,8 @@
   <div class="bg">
     <div class="main-container">
       <div class="left-container">
-        <talk-swiper />
-        <featured-swiper />
+        <talk-swiper v-if="!useAppStore().local" />
+        <featured-swiper v-if="!useAppStore().local" />
         <article-list />
       </div>
       <sidebar class="right-container" />
@@ -26,10 +26,11 @@
 
 <script setup lang="ts">
 import ImageCarousel from '@/views/home/ImageCarousel.vue';
-import Brand from '@/views/home/Brand.vue';
+import brand from '@/views/home/Brand.vue';
 import TalkSwiper from '@/views/home/TalkSwipper.vue';
 import FeaturedSwiper from '@/views/home/FeaturedSwiper.vue';
 import ArticleList from '@/views/home/ArticleList.vue';
+import useAppStore from '@/stores/modules/app';
 
 const scrollDown = () => {
   window.scrollTo({

@@ -1,6 +1,7 @@
 import type { AppState } from '@/stores/types';
 import nProgress from 'nprogress';
 import { defineStore } from 'pinia';
+import useStore from '@/stores';
 
 nProgress.configure({
   easing: 'ease',
@@ -13,6 +14,7 @@ nProgress.configure({
 
 const useAppStore = defineStore('useAppStore', {
   state: (): AppState => ({
+    local: false,
     sideDrawer: false,
     loading: false,
     npTimeout: -1,
@@ -25,6 +27,20 @@ const useAppStore = defineStore('useAppStore', {
     passwordFrame: false
   }),
   actions: {
+    /**
+     * 设置本地模式
+     */
+    setLocalMode() {
+      this.local = true;
+
+      const { localStore, blogStore } = useStore();
+      localStore.loadArticle();
+      blogStore.setBlogInfo(localStore.initBlogInfo());
+      blogStore.articleCount = localStore.articleList.length;
+      blogStore.categoryCount = localStore.categoryList.length;
+      blogStore.tagCount = localStore.tagList.length;
+      blogStore.setStatus(1);
+    },
 
     /**
      * 打开侧边栏

@@ -70,7 +70,7 @@ import categoryApi from '@/api/category';
 import { formatDate } from '@/utils/date';
 import MyImage from '@/components/MyImage.vue';
 import { getRandomBgImage } from '@/utils/common';
-import Pagination from '@/components/Pagination.vue';
+import pagination from '@/components/Pagination.vue';
 
 const bgImage = getRandomBgImage();
 const route = useRoute();
@@ -90,13 +90,7 @@ watch(
   () => {
     categoryApi.getCategoryArticleList(articleQuery.value).then(({ data }) => {
       articleList.value = data.data.articleConditionList;
-      name.value = data.data.name;
-      if (articleList.value.length > 0) {
-        status.value = 1;
-      } else {
-        status.value = 2;
-      }
-    }).catch(() => {status.value = -1;});
+    }).catch(() => {articleList.value = [];});
   }
 );
 
